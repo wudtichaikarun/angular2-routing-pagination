@@ -1,0 +1,14 @@
+<div class="row align-items-center justify-content-between">
+  <div class="col-4">
+    Books
+  </div>
+  <div class="col-4">
+    <a class="btn btn-secondary btn-sm">Create</a>
+  </div>
+</div>
+<hr />
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let book of books">
+    {{ book.title }}
+  </li>
+</ul>
