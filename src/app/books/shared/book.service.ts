@@ -14,12 +14,12 @@ export class BookService {
     return this.books;
   }
 
-//create book
-// createBook(book: Book) {
-//   this.books = [ 
-//     ...this.books,
-//      { ...book, id: this.books.length + 1 } 
-//      ];
-//   }
+  createBook(book: Book) {
+   this.books = [
+     ...this.books,
+     { ...book, id: this.books.length + 1 }
+     ];
+  console.log(this.books);
+  }
 
 }
