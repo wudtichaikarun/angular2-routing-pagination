@@ -3,12 +3,14 @@
     Books
   </div>
   <div class="col-4">
-    <a class="btn btn-secondary btn-sm">Create</a>
+    <a class="btn btn-secondary btn-sm" routerLink="/books/new">Create</a>
   </div>
 </div>
 <hr />
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let book of books">
+  <li 
+    class="list-group-item" *ngFor="let book of books"
+    [routerLink]="['/books', book.id]">
     {{ book.title }}
   </li>
 </ul>

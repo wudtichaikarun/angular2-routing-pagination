@@ -1,3 +1,4 @@
+//Create data base
 import { Book } from './book';
 
 const books: Book[] = Array.from({ length: 30 }, (_, index) => {
@@ -11,6 +12,6 @@ const books: Book[] = Array.from({ length: 30 }, (_, index) => {
         review: Array.from({ length: 3 }, (_, index) => `Review#${index + 1}`)
     
     }
-})
+});
 
 export const MockBooks = books;

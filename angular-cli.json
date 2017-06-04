@@ -19,8 +19,6 @@
       "prefix": "app",
       "styles": [
         "styles.css"
-        //use bootstrop 4 instance
-        //"../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [],
       "environments": {
