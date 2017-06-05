@@ -3,7 +3,10 @@ export interface Book {
     title: string;
     description: string;
     content: string;
-    reviews?: string[]
+    reviews?: string[];
+    prevId?: number;
+    nextId?:number;
+
 }
 
 
