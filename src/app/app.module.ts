@@ -7,9 +7,11 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
 import { BookService } from './books/shared/book.service';
+import { FlashMessageService } from './flash-message/shared/flash-message.service';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { FormComponent } from './books/form/form.component';
 import { BookComponent } from './books/book/book.component';
+import { FlashMessageComponent } from './flash-message/flash-message.component';
 
 const appRouts: Routes = [
   {
@@ -50,7 +52,8 @@ const appRouts: Routes = [
     BooksComponent,
     BookListComponent,
     FormComponent,
-    BookComponent
+    BookComponent,
+    FlashMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ const appRouts: Routes = [
     RouterModule.forRoot(appRouts)
   ],
   providers: [
-    BookService
+    BookService,
+    FlashMessageService
   ],
   bootstrap: [AppComponent]
 })
