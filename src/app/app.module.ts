@@ -12,6 +12,8 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { FormComponent } from './books/form/form.component';
 import { BookComponent } from './books/book/book.component';
 import { FlashMessageComponent } from './flash-message/flash-message.component';
+import { ReviewsComponent } from './books/book/reviews/reviews.component';
+import { ContentComponent } from './books/book/content/content.component';
 
 const appRouts: Routes = [
   {
@@ -35,7 +37,17 @@ const appRouts: Routes = [
       },
       {
         path: ':id',
-        component: BookComponent
+        component: BookComponent,
+        children: [
+          {
+            path: 'cotent',
+            component: ContentComponent
+          },
+          {
+            path: 'reviews',
+            component: ReviewsComponent
+          }
+        ]
       }
     ]
   },
@@ -53,7 +65,9 @@ const appRouts: Routes = [
     BookListComponent,
     FormComponent,
     BookComponent,
-    FlashMessageComponent
+    FlashMessageComponent,
+    ContentComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,

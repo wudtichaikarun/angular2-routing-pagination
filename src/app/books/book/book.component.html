@@ -29,3 +29,21 @@
     </div>
   </div>
 </div> 
+
+<ul class="nav nav-tabs">
+  <li class="nav-items" >
+    <a class="nav-link" 
+    routerLinkActivate="active"
+    [routerLink]="['/books', book.id, 'cotent']" >Content</a>
+  </li>
+   <li class="nav-items" >
+    <a class="nav-link" 
+    routerLinkActivate="active"
+    [routerLink]="['/books', book.id, 'reviews']" >Reviews</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active">
+    <router-outlet></router-outlet>
+  </div>
+</div>

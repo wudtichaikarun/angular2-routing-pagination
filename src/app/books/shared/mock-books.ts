@@ -9,7 +9,7 @@ const books: Book[] = Array.from({ length: 8 }, (_, index) => {
         title: `Title#${id}`,
         description: `Description#${id}`,
         content: `Content#${id}`,
-        reviews: Array.from({ length: 3 }, (_, index) => `Review#${index + 1}`)
+        reviews: Array.from({ length: 5 }, (_, index) => `Review#${index + 1}`)
     
     }
 });
