@@ -1,7 +1,7 @@
 //Create data base
 import { Book } from './book';
 
-const books: Book[] = Array.from({ length: 8 }, (_, index) => {
+const books: Book[] = Array.from({ length: 55 }, (_, index) => {
     const id = index +1;
 
     return {

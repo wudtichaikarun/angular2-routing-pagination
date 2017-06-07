@@ -2,17 +2,33 @@ import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { FlashMessageService } from '../../flash-message/shared/flash-message.service';
 import { MockBooks } from './mock-books';
+import { BooksResponse } from './books-response';
 
 
 @Injectable()
 export class BookService {
 
+  static PER_PAGE = 10;
   books: Book[] = MockBooks;
 
   constructor(private flashMessageService: FlashMessageService) { }
 
-  getBooks(){
-    return this.books;
+  // 30 content is 0..29
+  // 1: 0-9 => (page -1 ) * PER_PAGE     slice(0,10) is 0..9
+  // 2: 10-19 => (page -1 ) * PER_PAGE   slice(10,20) is 10..19
+  // 3: 20-29 => (page -1 ) * PER_PAGE    slice(20,30) is 20..29
+  getBooks(page = 1): BooksResponse {
+    console.log('page:value = ' + page);
+    const startIndex = (page - 1 ) * BookService.PER_PAGE;
+    const books = this.books
+      .slice(startIndex, startIndex + BookService.PER_PAGE);
+    return {
+      books,
+      currentPage: page,
+      //math.ceil 31/10 = 3 page   and 1  ---> 4 page
+      totalPages: Math.ceil(this.books.length / BookService.PER_PAGE)
+    }
+   
   }
 
   getBook(id: number): Book{

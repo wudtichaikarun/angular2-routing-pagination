@@ -1,3 +1,20 @@
+<div class="navbar navbar-inverse bg-inverse">
+  <div class="row alige-items-center justify-content-between">
+    <div class="col-4">
+      <a class="navbar-brand" routerLink="/">Book Store</a>
+    </div>
+    <div class="col-4">
+      <button 
+      class="btn btn-outline-success btn-sm"
+      *ngIf="!(isLoggedIn | async )"
+      (click)="login()">Login</button>
+       <button 
+      class="btn btn-outline-success btn-sm"
+      *ngIf="isLoggedIn | async "
+      (click)="logout()">Logout</button>
+    </div>
+  </div>
+</div>
 <app-flash-message></app-flash-message>
 <div class="container mt-2">
   <router-outlet></router-outlet>

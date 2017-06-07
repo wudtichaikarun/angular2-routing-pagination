@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book';
 
@@ -10,10 +11,29 @@ import { Book } from '../shared/book';
 export class BookListComponent implements OnInit {
 
   books: Book[];
+  currentPage: number;
+  totalPages: number[];
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private route : ActivatedRoute,
+    private bookService: BookService
+    ) { }
 
   ngOnInit() {
-    this.books = this.bookService.getBooks();
+   this.subscribeToPage();
+  }
+
+ private subscribeToPage(){
+   this.route.queryParams.subscribe(
+   params => this.loadPage(params.page)
+   );
+ }
+
+  private loadPage(page = 1){
+    const { books, currentPage, totalPages } = this.bookService.getBooks(page);
+   
+    this.books = books;
+    this.currentPage = currentPage;
+    this.totalPages = Array.from({ length: totalPages }, (_, index) => index +1)
   }
 }
