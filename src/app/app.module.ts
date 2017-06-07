@@ -10,6 +10,7 @@ import { BookService } from './books/shared/book.service';
 import { FlashMessageService } from './flash-message/shared/flash-message.service';
 import { AuthService } from './shared/auth.service';
 import { AuthGuard } from './shared/auth.guard';
+import { UnsaveChangesGuard } from './shared/unsave-changes.guard';
 
 //Component
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { BookComponent } from './books/book/book.component';
 import { FlashMessageComponent } from './flash-message/flash-message.component';
 import { ReviewsComponent } from './books/book/reviews/reviews.component';
 import { ContentComponent } from './books/book/content/content.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRouts: Routes = [
   {
@@ -35,12 +37,14 @@ const appRouts: Routes = [
         path: 'new',
         component: FormComponent,
         canActivate: [AuthGuard],
+        canDeactivate: [UnsaveChangesGuard],
         data: { formType: 'NEW'}
       },
       {
         path: ':id/edit',
         component: FormComponent,
         canActivate: [AuthGuard],
+        canDeactivate: [UnsaveChangesGuard],
         data: { formType: 'EDIT'}
       },
       {
@@ -68,6 +72,10 @@ const appRouts: Routes = [
     path: '',
     redirectTo: '/books',
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ]
 
@@ -80,7 +88,8 @@ const appRouts: Routes = [
     BookComponent,
     FlashMessageComponent,
     ContentComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +100,7 @@ const appRouts: Routes = [
   providers: [
     BookService,
     AuthGuard,
+    UnsaveChangesGuard,
     AuthService,
     FlashMessageService
   ],
